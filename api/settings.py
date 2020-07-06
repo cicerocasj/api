@@ -1,26 +1,10 @@
 import os
-import configparser
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-def get_config(section='default'):
-    config = configparser.RawConfigParser()
-    config.read(os.path.join(BASE_DIR, 'config.ini'))
-    options = []
-    config_default = {}
-    if config.has_section(section):
-        options = config.options(section)
-    for option in options:
-        config_default[option] = config.get(section, option)
-    return config_default
-
-
-db = get_config("database")
-dj = get_config("django")
-
-SECRET_KEY = dj.get('key')
+SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'cicerocasj-api.herokuapp.com']
 
@@ -78,6 +62,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+DATABASES['default']['CONN_MAX_AGE'] = 500
 
 AUTH_PASSWORD_VALIDATORS = [
     {
