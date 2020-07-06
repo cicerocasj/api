@@ -2,6 +2,7 @@ FROM python:3.8.3
 RUN mkdir /app
 WORKDIR /app
 ADD . /app/
+RUN pip install -r /app/requirements.txt
 ENV PYTHONUNBUFFERED 1
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
