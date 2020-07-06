@@ -22,7 +22,8 @@ dj = get_config("django")
 
 SECRET_KEY = dj.get('key')
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'cicerocasj-api.herokuapp.com']
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
