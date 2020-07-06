@@ -11,6 +11,7 @@ ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'cicerocasj-api.herokuapp.
 
 with open('application_log_config.json') as json_file:
     LOGGING = json.load(json_file)
+LOGGING.get('handlers').get('applogfile')['filename'] = os.path.join(BASE_DIR, 'application.log')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
