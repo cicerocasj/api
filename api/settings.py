@@ -37,7 +37,8 @@ INSTALLED_APPS = [
 
     # third
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -105,3 +106,16 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
+
+SWAGGER_SETTINGS = {
+    'DEFAULT_INFO': 'api.urls.openapi_info',
+    'SECURITY_DEFINITIONS': {
+        'api_key': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization'
+        }
+    },
+}
+LOGIN_URL = 'rest_framework:login'
+LOGOUT_URL = 'rest_framework:logout'
