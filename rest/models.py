@@ -2,6 +2,7 @@ from django.utils.timezone import now
 from django.db.models.signals import post_save
 from django.db import models
 from django.db.models import Sum
+from cpf_field.models import CPFField
 
 
 ORDER_STATUS_CHOICES = (
@@ -14,7 +15,7 @@ ORDER_STATUS_CHOICES = (
 
 class Client(models.Model):
     name = models.CharField(max_length=200)
-    cpf = models.CharField(max_length=11)
+    cpf = CPFField('cpf', unique=True)
     birth = models.DateTimeField()
 
     def __str__(self):
