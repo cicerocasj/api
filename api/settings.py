@@ -7,11 +7,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'cicerocasj-api.herokuapp.com']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '.herokuapp.com', 'cicerocasj-api.herokuapp.com']
 
 with open('application_log_config.json') as json_file:
     LOGGING = json.load(json_file)
-LOGGING.get('handlers').get('applogfile')['filename'] = os.path.join(BASE_DIR, 'application.log')
+LOGGING.get('handlers').get('applogfile')['filename'] = 'application.log'
 
 INSTALLED_APPS = [
     'django.contrib.admin',

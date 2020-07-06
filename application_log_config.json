@@ -25,7 +25,7 @@
                 "formatter": "verbose"
         },
         "console": {
-            "level": "INFO",
+            "level": "DEBUG",
             "filters": ["require_debug_true"],
             "class": "logging.StreamHandler",
             "formatter": "simple"
@@ -38,12 +38,12 @@
     "loggers": {
         "django.request": {
             "handlers": ["applogfile"],
-            "level": "ERROR",
+            "level": "DEBUG",
             "propagate": true
         },
         "django": {
             "handlers": ["applogfile"],
-            "level": "INFO"
+            "level": "DEBUG"
         }
     }
 }
